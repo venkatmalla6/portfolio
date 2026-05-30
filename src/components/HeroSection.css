@@ -1,0 +1,111 @@
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80vh;
+  position: relative;
+}
+
+.hero-content {
+  flex: 1;
+  z-index: 10;
+}
+
+.system-status {
+  color: var(--color-accent);
+  letter-spacing: 4px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.btn-secondary:hover {
+  background: rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.hero-visuals {
+  flex: 1;
+  position: relative;
+  height: 500px;
+}
+
+.earth-globe {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.05), transparent);
+  box-shadow: 0 0 100px rgba(59, 130, 246, 0.3);
+  position: absolute;
+  top: 15%;
+  right: 10%;
+}
+
+.earth-globe::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  border: 2px dashed rgba(16, 185, 129, 0.3);
+}
+
+.cloud-node {
+  position: absolute;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.node-icon {
+  color: var(--color-secondary);
+}
+
+.cloud-node span {
+  color: var(--color-accent);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 800px) {
+  .hero-section {
+    flex-direction: column;
+  }
+  .hero-visuals {
+    display: none; /* Hide complex visuals on mobile for max perf */
+  }
+  .hero-title {
+    font-size: 3rem;
+  }
+}

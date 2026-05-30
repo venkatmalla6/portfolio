@@ -1,0 +1,65 @@
+.aws-section {
+  padding: 2rem 0;
+}
+
+.aws-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.aws-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.aws-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+  width: 80px;
+}
+
+.aws-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.aws-icon {
+  color: #fff;
+  transition: color 0.2s ease;
+}
+
+.aws-node-label {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 6px;
+  text-align: center;
+}
+
+.aws-node:hover .aws-icon-wrapper {
+  transform: scale(1.2);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+}
+
+.aws-node:hover .aws-icon {
+  color: var(--color-accent);
+}
