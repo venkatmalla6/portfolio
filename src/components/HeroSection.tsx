@@ -34,10 +34,16 @@ const HeroSection = () => {
 
       <div className="hero-visuals">
         <motion.div 
-          className="earth-globe"
+          className="earth-globe-container"
           animate={{ rotate: 360 }}
           transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-        />
+        >
+          <img 
+            src="/futuristic-globe.png" 
+            alt="Futuristic Globe" 
+            className="earth-image" 
+          />
+        </motion.div>
         
         {/* Floating Cloud Nodes */}
         <motion.div 

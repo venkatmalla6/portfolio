@@ -3,34 +3,28 @@ import './FuturisticTimelineSection.css';
 
 const timelineData = [
   {
-    title: 'BTech Journey',
-    subtitle: 'XYZ University',
-    description: 'Pursuing a degree in Computer Science with a focus on cloud computing and software engineering. Current CGPA: 9.2.',
-    Icon: GraduationCap,
-  },
-  {
-    title: 'CSOP Project',
-    subtitle: 'Community Service Oriented Project',
-    description: 'Developed an innovative digital solution to aid local NGOs in resource distribution and management.',
-    Icon: Users,
-  },
-  {
-    title: 'Certifications',
-    subtitle: 'AWS & Google Cloud',
-    description: 'Obtained AWS Certified Solutions Architect and Google Cloud Professional Developer certifications to validate cloud expertise.',
-    Icon: Award,
-  },
-  {
-    title: 'Internships',
-    subtitle: 'Software Engineering Intern',
-    description: 'Worked with a high-growth startup to optimize their backend services, reducing latency by 40%.',
+    title: 'AWS + DevOps Intern',
+    subtitle: 'Techwing (Jan 2026 - Present)',
+    description: 'Deployed and managed AWS cloud infrastructure. Automated deployment workflows using GitHub Actions and implemented IaC using Terraform.',
     Icon: Briefcase,
   },
   {
-    title: 'Achievements',
-    subtitle: 'Hackathon Winner',
-    description: 'Secured 1st place at the National Cloud Computing Hackathon by building a serverless disaster recovery architecture.',
+    title: 'Organizer & Mentor',
+    subtitle: 'SkillUp Club (Jan 2025 - Present)',
+    description: 'Organized workshops on Flutter, AI, Cloud Computing, and mentored 100+ students on modern software development.',
+    Icon: Users,
+  },
+  {
+    title: 'App Creator & Ambassador',
+    subtitle: 'Google Play & Red Hat',
+    description: 'Published multiple mobile apps including PocketAI (500+ downloads) and served as a Red Hat College Brand Ambassador.',
     Icon: Trophy,
+  },
+  {
+    title: 'B.Tech CS (Lateral)',
+    subtitle: 'Godavari Institute of Engineering & Technology',
+    description: 'Pursuing Computer Science Engineering with a CGPA of 8.6. Focus on building AI systems and scalable architectures.',
+    Icon: GraduationCap,
   },
 ];
 

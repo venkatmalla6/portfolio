@@ -5,27 +5,27 @@ import './ProjectsShowcase.css';
 
 const projects = [
   {
-    title: 'CropMitra',
-    description: 'An AI-powered agricultural assistant helping farmers with crop disease detection, yield prediction, and market insights.',
-    tags: ['React', 'Python', 'TensorFlow', 'AWS'],
-    icon: <Database size={40} className="text-accent" />
-  },
-  {
-    title: 'SignTalk',
-    description: 'Real-time sign language translation application utilizing computer vision to bridge the communication gap.',
-    tags: ['Python', 'OpenCV', 'AWS EC2', 'WebSockets'],
-    icon: <Smartphone size={40} className="text-accent" />
-  },
-  {
-    title: 'SmartMed',
-    description: 'A comprehensive healthcare management platform connecting patients with doctors, featuring encrypted health records.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Docker'],
+    title: 'AI-Powered Vehicle Insurance Underwriting',
+    description: 'Multi-agent AI platform automating insurance processing with OCR, fraud detection, and explainable decision workflows.',
+    tags: ['LangGraph', 'FastAPI', 'PostgreSQL', 'Docker'],
     icon: <Shield size={40} className="text-accent" />
   },
   {
-    title: 'Food Ordering App',
-    description: 'A scalable food delivery application with real-time driver tracking and payment gateway integration.',
-    tags: ['React Native', 'Stripe', 'Firebase', 'Google Maps'],
+    title: 'PocketAI - Offline AI Assistant',
+    description: 'Offline AI chatbot with on-device inference using Ollama and Hugging Face models (500+ Play Store downloads).',
+    tags: ['Flutter', 'Ollama', 'llama.cpp'],
+    icon: <Smartphone size={40} className="text-accent" />
+  },
+  {
+    title: 'AstarAI - Assessment Platform',
+    description: 'AI app converting PDFs into MCQ assessments using Gemini AI, OCR, and Firebase.',
+    tags: ['Flutter', 'Gemini AI', 'Firebase', 'OCR'],
+    icon: <Database size={40} className="text-accent" />
+  },
+  {
+    title: 'SmartMed - Medical Learning Assistant',
+    description: 'AI platform for generating quizzes and study plans utilizing Groq Llama 3.1 and ML Kit OCR.',
+    tags: ['Flutter', 'Groq API', 'Hive', 'Firebase'],
     icon: <Terminal size={40} className="text-accent" />
   }
 ];

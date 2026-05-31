@@ -2,30 +2,29 @@ import { Radar, Cloud, Box, Code, Globe, Server, Shield, Network, GitBranch, Ter
 import './SkillsDashboard.css';
 
 const cloudSkills = [
-  { name: 'AWS', level: 90, Icon: Cloud },
-  { name: 'EC2', level: 85, Icon: Server },
-  { name: 'S3', level: 90, Icon: Box },
-  { name: 'IAM', level: 80, Icon: Shield },
-  { name: 'VPC', level: 75, Icon: Network },
+  { name: 'AWS EC2/S3', level: 90, Icon: Cloud },
+  { name: 'Docker', level: 85, Icon: Box },
+  { name: 'Terraform', level: 80, Icon: Server },
+  { name: 'CI/CD (Actions)', level: 85, Icon: GitBranch },
+  { name: 'Linux', level: 80, Icon: Terminal },
 ];
 
-const devOpsSkills = [
-  { name: 'Docker', level: 90, Icon: Box },
-  { name: 'Jenkins', level: 80, Icon: Terminal },
-  { name: 'GitHub Actions', level: 85, Icon: GitBranch },
+const aiSkills = [
+  { name: 'LangGraph', level: 90, Icon: Network },
+  { name: 'GenAI / LLMs', level: 85, Icon: Code },
+  { name: 'Prompt Eng', level: 90, Icon: Terminal },
 ];
 
 const programmingSkills = [
   { name: 'Python', level: 95, Icon: Code },
-  { name: 'React', level: 90, Icon: Globe },
-  { name: 'Node.js', level: 85, Icon: Server },
+  { name: 'Dart / Flutter', level: 90, Icon: Globe },
+  { name: 'JavaScript', level: 80, Icon: Code },
 ];
 
-const networkingSkills = [
-  { name: 'TCP/IP', level: 80, Icon: Globe },
-  { name: 'Routing', level: 75, Icon: Network },
-  { name: 'Switching', level: 70, Icon: Network },
-  { name: 'DNS', level: 85, Icon: Globe },
+const backendSkills = [
+  { name: 'REST APIs', level: 90, Icon: Server },
+  { name: 'FastAPI', level: 85, Icon: Cloud },
+  { name: 'Firebase', level: 90, Icon: Database },
 ];
 
 const SkillCategory = ({ title, skills }: { title: string, skills: any[] }) => {
@@ -65,10 +64,10 @@ const SkillsDashboard = () => {
       </div>
 
       <div className="categories-container">
-        <SkillCategory title="CLOUD INFRASTRUCTURE" skills={cloudSkills} />
-        <SkillCategory title="DEVOPS PIPELINE" skills={devOpsSkills} />
-        <SkillCategory title="CORE PROGRAMMING" skills={programmingSkills} />
-        <SkillCategory title="NETWORKING" skills={networkingSkills} />
+        <SkillCategory title="CLOUD & DEVOPS" skills={cloudSkills} />
+        <SkillCategory title="AI ENGINEERING" skills={aiSkills} />
+        <SkillCategory title="PROGRAMMING" skills={programmingSkills} />
+        <SkillCategory title="BACKEND & MOBILE" skills={backendSkills} />
       </div>
     </section>
   );

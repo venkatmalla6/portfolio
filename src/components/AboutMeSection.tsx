@@ -3,27 +3,28 @@ import './AboutMeSection.css';
 
 const education = [
   {
-    year: '2022 - 2026',
-    title: 'B.Tech in Computer Science',
-    institution: 'XYZ University',
-    highlight: 'CGPA: 9.2 / 10.0',
+    year: '2024 - 2027',
+    title: 'B.Tech in Computer Science (Lateral)',
+    institution: 'Godavari Institute of Engineering and Technology, Rajahmundry',
+    highlight: 'Pursuing',
   },
   {
-    year: '2020 - 2022',
-    title: 'Higher Secondary Education',
-    institution: 'ABC Junior College',
-    highlight: 'Grade: 95%',
+    year: '2020 - 2024',
+    title: 'Diploma in Chemical Engineering',
+    institution: 'Government Institute of Chemical Engineering, Visakhapatnam',
+    highlight: 'Completed',
   },
 ];
 
 const certs = [
-  'AWS Certified Solutions Architect',
-  'Google Cloud Professional Developer',
-  'Frontend Development Expert',
+  'Red Hat College Brand Ambassador',
+  'SkillUp Club Organizer (100+ students mentored)',
+  '500+ Downloads for PocketAI App',
+  'Published multiple apps on Google Play Store',
 ];
 
 const skills = [
-  'React', 'TypeScript', 'AWS', 'Docker', 'Kubernetes', 'CI/CD', 'Firebase', 'Node.js', 'Python', 'Terraform'
+  'Python', 'Dart', 'AWS', 'Docker', 'Terraform', 'CI/CD', 'GitHub Actions', 'GenAI', 'LangGraph', 'Flutter', 'Firebase'
 ];
 
 const AboutMeSection = () => {
@@ -44,9 +45,9 @@ const AboutMeSection = () => {
               <span className="alias-label">IDENTIFICATION ALIAS</span>
               <h2 className="alias-name">VENKAT</h2>
               
-              <h4 className="mission-label">MISSION OBJECTIVE</h4>
+              <h4 className="mission-label">PROFESSIONAL SUMMARY</h4>
               <p className="mission-text">
-                To architect scalable cloud infrastructure and develop high-performance, cross-platform applications that push the boundaries of modern UI/UX design.
+                Computer Science Engineering student with hands-on experience in AWS Cloud, DevOps, AI-powered applications, Developer Experience (DevEx), and workflow automation. Passionate about building cloud-native apps and multi-agent AI systems.
               </p>
             </div>
           </div>
@@ -68,7 +69,7 @@ const AboutMeSection = () => {
                     <span className="edu-year">{edu.year}</span>
                     <h4 className="edu-title">{edu.title}</h4>
                     <span className="edu-inst">{edu.institution}</span>
-                    <div className="edu-highlight">{edu.highlight}</div>
+                    {edu.highlight && <div className="edu-highlight">{edu.highlight}</div>}
                   </div>
                 </div>
               ))}
@@ -76,7 +77,7 @@ const AboutMeSection = () => {
 
             <div className="section-sub-header" style={{ marginTop: '2rem' }}>
               <Verified size={24} color="var(--color-secondary)" />
-              <h3>SECURITY CLEARANCES (CERTIFICATIONS)</h3>
+              <h3>ACHIEVEMENTS & LEADERSHIP</h3>
             </div>
             <div className="certs-list">
               {certs.map(cert => (

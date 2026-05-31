@@ -41,24 +41,24 @@ const CommunicationCenter = () => {
             <div className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': 'var(--color-accent)' } as any}>
               <Mail size={32} className="contact-icon" />
               <h4>EMAIL</h4>
-              <p>venkat@example.com</p>
+              <p>venkatmallacs@gmail.com</p>
             </div>
             <div className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': 'var(--color-secondary)' } as any}>
               <Phone size={32} className="contact-icon" />
               <h4>PHONE</h4>
-              <p>+91 98765 43210</p>
+              <p>+91 6303148893</p>
             </div>
           </div>
           <div className="contact-row">
             <div className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': '#0077b5' } as any}>
               <Users size={32} className="contact-icon" />
               <h4>LINKEDIN</h4>
-              <p>linkedin.com/in/venkat</p>
+              <p>linkedin.com/in/malla-venkat</p>
             </div>
             <div className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': '#ffffff' } as any}>
               <Code2 size={32} className="contact-icon" />
               <h4>GITHUB</h4>
-              <p>github.com/venkat</p>
+              <p>github.com/venkatmallacs</p>
             </div>
           </div>
         </div>
