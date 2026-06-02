@@ -29,7 +29,7 @@ const skills = [
 
 const AboutMeSection = () => {
   return (
-    <section className="about-section">
+    <section id="about" className="about-section">
       <div className="about-container glass-panel">
         <div className="about-grid">
           

@@ -1,4 +1,4 @@
-import { Radar, Cloud, Box, Code, Globe, Server, Shield, Network, GitBranch, Terminal } from 'lucide-react';
+import { Radar, Cloud, Box, Code, Globe, Server, Shield, Network, GitBranch, Terminal, Database } from 'lucide-react';
 import './SkillsDashboard.css';
 
 const cloudSkills = [
@@ -57,7 +57,7 @@ const SkillCategory = ({ title, skills }: { title: string, skills: any[] }) => {
 
 const SkillsDashboard = () => {
   return (
-    <section className="skills-section">
+    <section id="skills" className="skills-section">
       <div className="section-header">
         <Radar size={32} color="var(--color-accent)" />
         <h2>SYSTEM CAPABILITIES (SKILLS)</h2>

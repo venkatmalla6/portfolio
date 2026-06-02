@@ -1,0 +1,120 @@
+.resume-doc-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #fff;
+  color: #000;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.resume-doc-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.resume-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.resume-name {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0 0 0.25rem 0;
+  text-transform: uppercase;
+}
+
+.resume-contact {
+  margin: 0;
+  font-size: 11px;
+}
+
+.resume-section {
+  margin-bottom: 0.75rem;
+}
+
+.resume-section-title {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 0 2px 0;
+}
+
+.resume-divider {
+  border: 0;
+  border-bottom: 1px solid #000;
+  margin: 0 0 4px 0;
+}
+
+.resume-text {
+  margin: 0;
+  text-align: justify;
+}
+
+.resume-item {
+  margin-bottom: 6px;
+}
+
+.resume-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.resume-item-title {
+  font-size: 11px;
+}
+
+.resume-item-date {
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.resume-item-subtitle {
+  font-size: 11px;
+  font-style: italic;
+  margin-bottom: 2px;
+}
+
+.resume-link {
+  font-size: 10px;
+  color: blue;
+  margin-bottom: 2px;
+}
+
+.resume-list {
+  margin: 2px 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.resume-list li {
+  margin-bottom: 2px;
+  text-align: justify;
+}
+
+.resume-list.no-margin {
+  margin-top: 4px;
+}
+
+/* Custom Scrollbar for the preview */
+.resume-doc-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.resume-doc-container::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.resume-doc-container::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 3px;
+}
+
+.resume-doc-container::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

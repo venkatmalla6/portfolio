@@ -3,7 +3,7 @@ import './CommunicationCenter.css';
 
 const CommunicationCenter = () => {
   return (
-    <section className="comms-section">
+    <section id="contact" className="comms-section">
       <div className="section-header">
         <Radio size={32} color="var(--color-secondary)" />
         <h2>SECURE COMMS CENTER</h2>
@@ -38,28 +38,28 @@ const CommunicationCenter = () => {
 
         <div className="contact-cards">
           <div className="contact-row">
-            <div className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': 'var(--color-accent)' } as any}>
+            <a href="mailto:venkatmallacs@gmail.com" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': 'var(--color-accent)' } as any}>
               <Mail size={32} className="contact-icon" />
               <h4>EMAIL</h4>
               <p>venkatmallacs@gmail.com</p>
-            </div>
-            <div className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': 'var(--color-secondary)' } as any}>
+            </a>
+            <a href="tel:+916303148893" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': 'var(--color-secondary)' } as any}>
               <Phone size={32} className="contact-icon" />
               <h4>PHONE</h4>
               <p>+91 6303148893</p>
-            </div>
+            </a>
           </div>
           <div className="contact-row">
-            <div className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': '#0077b5' } as any}>
+            <a href="https://linkedin.com/in/venkat-malla-5528b8381" target="_blank" rel="noopener noreferrer" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': '#0077b5' } as any}>
               <Users size={32} className="contact-icon" />
               <h4>LINKEDIN</h4>
-              <p>linkedin.com/in/malla-venkat</p>
-            </div>
-            <div className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': '#ffffff' } as any}>
+              <p>Venkat Malla</p>
+            </a>
+            <a href="https://github.com/venkatmalla6" target="_blank" rel="noopener noreferrer" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': '#ffffff' } as any}>
               <Code2 size={32} className="contact-icon" />
               <h4>GITHUB</h4>
-              <p>github.com/venkatmallacs</p>
-            </div>
+              <p>@venkatmalla6</p>
+            </a>
           </div>
         </div>
       </div>

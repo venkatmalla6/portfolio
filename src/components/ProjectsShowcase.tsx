@@ -101,7 +101,7 @@ const ProjectCard = ({ project }: { project: any }) => {
 
 const ProjectsShowcase = () => {
   return (
-    <section className="projects-section">
+    <section id="projects" className="projects-section">
       <div className="section-header">
         <Database size={32} color="var(--color-secondary)" />
         <h2>DEPLOYED PROTOCOLS (PROJECTS)</h2>

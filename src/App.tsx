@@ -1,3 +1,5 @@
+import { Routes, Route } from 'react-router-dom'
+import NavBar from './components/NavBar'
 import HeroSection from './components/HeroSection'
 import AboutMeSection from './components/AboutMeSection'
 import FuturisticTimelineSection from './components/FuturisticTimelineSection'
@@ -12,25 +14,36 @@ import CommunicationCenter from './components/CommunicationCenter'
 function App() {
   return (
     <div className="layout-container">
-      <HeroSection />
-      <div style={{ height: '80px' }} />
-      <AboutMeSection />
-      <div style={{ height: '80px' }} />
-      <FuturisticTimelineSection />
-      <div style={{ height: '80px' }} />
-      <SkillsDashboard />
-      <div style={{ height: '80px' }} />
-      <RecruiterDashboardSection />
-      <div style={{ height: '80px' }} />
-      <DevopsPipelineSection />
-      <div style={{ height: '80px' }} />
-      <AwsArchitectureSection />
-      <div style={{ height: '80px' }} />
-      <NetworkTopologySection />
-      <div style={{ height: '80px' }} />
-      <ProjectsShowcase />
-      <div style={{ height: '80px' }} />
-      <CommunicationCenter />
+      <NavBar />
+      
+      <Routes>
+        <Route path="/" element={<HeroSection />} />
+        
+        <Route path="/about" element={
+          <div className="page-container">
+            <AboutMeSection />
+            <div style={{ height: '80px' }} />
+            <FuturisticTimelineSection />
+          </div>
+        } />
+        
+        <Route path="/skills" element={
+          <div className="page-container">
+            <SkillsDashboard />
+            <div style={{ height: '80px' }} />
+            <DevopsPipelineSection />
+            <div style={{ height: '80px' }} />
+            <AwsArchitectureSection />
+            <div style={{ height: '80px' }} />
+            <NetworkTopologySection />
+          </div>
+        } />
+
+        <Route path="/recruiter" element={<RecruiterDashboardSection />} />
+        <Route path="/projects" element={<ProjectsShowcase />} />
+        <Route path="/contact" element={<CommunicationCenter />} />
+      </Routes>
+      
       <div style={{ height: '80px' }} />
     </div>
   )

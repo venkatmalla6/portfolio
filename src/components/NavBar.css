@@ -1,0 +1,44 @@
+.top-navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1.5rem 2rem;
+  z-index: 999;
+  /* subtle gradient so it doesn't clash with content behind it */
+  background: linear-gradient(180deg, rgba(13, 15, 26, 0.9) 0%, rgba(13, 15, 26, 0) 100%);
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none; /* allows clicking through the background */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  pointer-events: auto; /* re-enable clicks for the links */
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+.nav-link:hover {
+  color: var(--color-accent);
+  background: rgba(16, 185, 129, 0.1); /* subtle accent background on hover */
+}

@@ -1,10 +1,14 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Download, Eye, Cloud, Database, Code } from 'lucide-react';
+import { Eye, Cloud, Database, Code, X, FileText } from 'lucide-react';
 import './HeroSection.css';
 
 const HeroSection = () => {
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+
   return (
-    <section className="hero-section">
+    <section id="home" className="hero-section">
       <div className="hero-content">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -12,6 +16,12 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
         >
           <p className="system-status">SYSTEM ONLINE</p>
+          
+          <div className="profile-image-container">
+            <img src="/profile-edited.png" alt="Malla Venkat" className="profile-image" />
+            <div className="profile-glow"></div>
+          </div>
+
           <h1 className="hero-title">
             Malla Venkat
           </h1>
@@ -20,14 +30,18 @@ const HeroSection = () => {
           </h2>
           
           <div className="hero-actions">
-            <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Download size={20} />
-              DOWNLOAD RESUME
+            <button 
+              className="btn-primary" 
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+              onClick={() => setIsResumeModalOpen(true)}
+            >
+              <FileText size={20} />
+              VIEW RESUME
             </button>
-            <button className="btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Link to="/projects" className="btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
               <Eye size={20} />
               VIEW PROJECTS
-            </button>
+            </Link>
           </div>
         </motion.div>
       </div>
@@ -36,11 +50,11 @@ const HeroSection = () => {
         <motion.div 
           className="earth-globe-container"
           animate={{ rotate: 360 }}
-          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
         >
           <img 
-            src="/futuristic-globe.png" 
-            alt="Futuristic Globe" 
+            src="/realistic-globe.png" 
+            alt="Realistic Network Globe" 
             className="earth-image" 
           />
         </motion.div>
@@ -76,6 +90,27 @@ const HeroSection = () => {
           <span>Lambda</span>
         </motion.div>
       </div>
+
+      {/* Resume Modal */}
+      {isResumeModalOpen && (
+        <div className="resume-modal-overlay" onClick={() => setIsResumeModalOpen(false)}>
+          <div className="resume-modal-content glass-panel" onClick={(e) => e.stopPropagation()}>
+            <div className="resume-modal-header">
+              <h3>Resume Preview</h3>
+              <button className="close-modal-btn" onClick={() => setIsResumeModalOpen(false)}>
+                <X size={24} />
+              </button>
+            </div>
+            <div className="resume-modal-body">
+              <iframe 
+                src="/venkat_resume.pdf" 
+                title="Resume"
+                className="resume-iframe"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
