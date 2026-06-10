@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Cloud, Router, HardDrive, Database, ServerCog, Cpu, Globe } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import './AwsArchitectureSection.css';
 
 const nodes = [
@@ -25,6 +26,8 @@ const connections = [
 ];
 
 const AwsArchitectureSection = () => {
+  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
+
   return (
     <section className="aws-section">
       <div className="section-header">
@@ -68,7 +71,8 @@ const AwsArchitectureSection = () => {
                   duration: 2.5,
                   ease: "linear",
                   repeat: Infinity,
-                  repeatType: "loop"
+                  repeatType: "loop",
+                  delay: idx * 0.2, // Offset animations
                 }}
               />
             );
@@ -80,12 +84,30 @@ const AwsArchitectureSection = () => {
             key={node.id}
             className="aws-node"
             style={{ left: `${node.x}%`, top: `${node.y}%` }}
-            title={node.info}
+            onMouseEnter={() => setHoveredNode(node.id)}
+            onMouseLeave={() => setHoveredNode(null)}
           >
-            <div className="aws-icon-wrapper">
+            <motion.div 
+              className="aws-icon-wrapper"
+              whileHover={{ scale: 1.2, boxShadow: "0 0 20px var(--color-accent)" }}
+            >
               <node.Icon size={32} className="aws-icon" />
-            </div>
+            </motion.div>
             <span className="aws-node-label">{node.label}</span>
+            
+            {/* Custom Tooltip */}
+            <AnimatePresence>
+              {hoveredNode === node.id && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="aws-tooltip"
+                >
+                  {node.info}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ))}
       </div>

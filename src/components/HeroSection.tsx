@@ -1,11 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Eye, Cloud, Database, Code, X, FileText } from 'lucide-react';
+import { Eye, Cloud, Database, Code, X, FileText, Terminal } from 'lucide-react';
+import TerminalEmulator from './TerminalEmulator';
 import './HeroSection.css';
 
 const HeroSection = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Toggle on Ctrl+` or Cmd+`
+      if ((e.ctrlKey || e.metaKey) && e.key === '`') {
+        setIsTerminalOpen(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <section id="home" className="hero-section">
@@ -42,6 +55,15 @@ const HeroSection = () => {
               <Eye size={20} />
               VIEW PROJECTS
             </Link>
+            <button 
+              className="btn-secondary" 
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', cursor: 'pointer', background: 'rgba(16, 185, 129, 0.1)', borderColor: 'rgba(16, 185, 129, 0.3)' }}
+              onClick={() => setIsTerminalOpen(true)}
+              title="Ctrl+` to toggle terminal"
+            >
+              <Terminal size={20} />
+              TERMINAL
+            </button>
           </div>
         </motion.div>
       </div>
@@ -110,6 +132,11 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Terminal Emulator */}
+      {isTerminalOpen && (
+        <TerminalEmulator onClose={() => setIsTerminalOpen(false)} />
       )}
     </section>
   );

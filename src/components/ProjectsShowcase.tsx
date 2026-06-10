@@ -8,25 +8,29 @@ const projects = [
     title: 'AI-Powered Vehicle Insurance Underwriting',
     description: 'Multi-agent AI platform automating insurance processing with OCR, fraud detection, and explainable decision workflows.',
     tags: ['LangGraph', 'FastAPI', 'PostgreSQL', 'Docker'],
-    icon: <Shield size={40} className="text-accent" />
+    icon: <Shield size={40} className="text-accent" />,
+    metrics: ['Reduced manual processing time by 40%', 'Handled 5,000+ test claims']
   },
   {
     title: 'PocketAI - Offline AI Assistant',
     description: 'Offline AI chatbot with on-device inference using Ollama and Hugging Face models (500+ Play Store downloads).',
     tags: ['Flutter', 'Ollama', 'llama.cpp'],
-    icon: <Smartphone size={40} className="text-accent" />
+    icon: <Smartphone size={40} className="text-accent" />,
+    metrics: ['500+ Active Installs', 'Zero cloud infrastructure cost']
   },
   {
     title: 'AstarAI - Assessment Platform',
     description: 'AI app converting PDFs into MCQ assessments using Gemini AI, OCR, and Firebase.',
     tags: ['Flutter', 'Gemini AI', 'Firebase', 'OCR'],
-    icon: <Database size={40} className="text-accent" />
+    icon: <Database size={40} className="text-accent" />,
+    metrics: ['Processed 10,000+ document pages', '99.9% uptime on Firebase']
   },
   {
     title: 'SmartMed - Medical Learning Assistant',
     description: 'AI platform for generating quizzes and study plans utilizing Groq Llama 3.1 and ML Kit OCR.',
     tags: ['Flutter', 'Groq API', 'Hive', 'Firebase'],
-    icon: <Terminal size={40} className="text-accent" />
+    icon: <Terminal size={40} className="text-accent" />,
+    metrics: ['Generated 1,000+ custom study plans', '<100ms API response time']
   }
 ];
 
@@ -94,6 +98,17 @@ const ProjectCard = ({ project }: { project: any }) => {
             <span key={tag} className="project-tag">{tag}</span>
           ))}
         </div>
+
+        {project.metrics && (
+          <div className="project-metrics" style={{ transform: "translateZ(25px)" }}>
+            {project.metrics.map((metric: string, idx: number) => (
+              <div key={idx} className="metric-item">
+                <span className="metric-dot"></span>
+                {metric}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </motion.div>
   );
