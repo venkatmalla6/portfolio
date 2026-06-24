@@ -12,6 +12,7 @@ const DevopsPipelineSection = React.lazy(() => import('./components/DevopsPipeli
 const AwsArchitectureSection = React.lazy(() => import('./components/AwsArchitectureSection'))
 const NetworkTopologySection = React.lazy(() => import('./components/NetworkTopologySection'))
 const ProjectsShowcase = React.lazy(() => import('./components/ProjectsShowcase'))
+const GitHubProjectsSection = React.lazy(() => import('./components/GitHubProjectsSection'))
 const CommunicationCenter = React.lazy(() => import('./components/CommunicationCenter'))
 
 // Simple loading fallback
@@ -55,7 +56,13 @@ function App() {
           } />
 
           <Route path="/recruiter" element={<RecruiterDashboardSection />} />
-          <Route path="/projects" element={<ProjectsShowcase />} />
+          <Route path="/projects" element={
+            <div className="page-container">
+              <ProjectsShowcase />
+              <div style={{ height: '80px' }} />
+              <GitHubProjectsSection />
+            </div>
+          } />
           <Route path="/contact" element={<CommunicationCenter />} />
         </Routes>
       </Suspense>
