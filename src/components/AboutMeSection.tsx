@@ -37,7 +37,7 @@ const AboutMeSection = () => {
           <div className="about-column">
             <div className="profile-hologram-wrapper">
               <div className="profile-hologram">
-                <img src="https://ui-avatars.com/api/?name=Venkat&background=random&color=fff" alt="Profile" />
+                <img src="/profile-edited.png" alt="Profile" />
               </div>
             </div>
             

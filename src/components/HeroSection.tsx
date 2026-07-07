@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Eye, Cloud, Database, Code, X, FileText, Terminal } from 'lucide-react';
+import { Eye, Cloud, Database, Code, X, FileText, Terminal, Infinity, ShieldCheck, Package } from 'lucide-react';
 import TerminalEmulator from './TerminalEmulator';
 import './HeroSection.css';
 
@@ -51,10 +50,10 @@ const HeroSection = () => {
               <FileText size={20} />
               VIEW RESUME
             </button>
-            <Link to="/projects" className="btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+            <a href="#projects" className="btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
               <Eye size={20} />
               VIEW PROJECTS
-            </Link>
+            </a>
             <button 
               className="btn-secondary" 
               style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', cursor: 'pointer', background: 'rgba(16, 185, 129, 0.1)', borderColor: 'rgba(16, 185, 129, 0.3)' }}
@@ -81,36 +80,61 @@ const HeroSection = () => {
           />
         </motion.div>
         
-        {/* Floating Cloud Nodes */}
-        <motion.div 
-          className="cloud-node glass-panel"
-          style={{ top: '10%', right: '30%' }}
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        {/* Floating Cloud & DevOps Nodes (Orbit Path) */}
+        
+        {/* 1. Jenkins (Build) - Top Left */}
+        <div 
+          className="cloud-node glass-panel node-jenkins"
+          style={{ top: '12%', right: '48%' }}
         >
-          <Cloud className="node-icon" />
-          <span>AWS EC2</span>
-        </motion.div>
+          <Infinity className="node-icon" style={{ color: '#F05138' }} />
+          <span>Jenkins</span>
+        </div>
 
-        <motion.div 
-          className="cloud-node glass-panel"
-          style={{ bottom: '20%', right: '5%' }}
-          animate={{ y: [0, 25, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        {/* 2. SonarQube (Quality) - Top Right */}
+        <div 
+          className="cloud-node glass-panel node-sonar"
+          style={{ top: '12%', right: '12%' }}
+        >
+          <ShieldCheck className="node-icon" style={{ color: '#4E9BCD' }} />
+          <span>SonarQube</span>
+        </div>
+
+        {/* 3. Nexus (Artifacts) - Middle Right */}
+        <div 
+          className="cloud-node glass-panel node-nexus"
+          style={{ top: '45%', right: '2%' }}
+        >
+          <Package className="node-icon" style={{ color: '#E15A27' }} />
+          <span>Nexus</span>
+        </div>
+
+        {/* 4. AWS S3 (Deploy) - Bottom Right */}
+        <div 
+          className="cloud-node glass-panel node-s3"
+          style={{ bottom: '10%', right: '10%' }}
         >
           <Database className="node-icon" />
           <span>S3 Bucket</span>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          className="cloud-node glass-panel"
-          style={{ bottom: '15%', right: '35%' }}
-          animate={{ y: [0, -15, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        {/* 5. AWS Lambda (Deploy) - Bottom Left */}
+        <div 
+          className="cloud-node glass-panel node-lambda"
+          style={{ bottom: '10%', right: '50%' }}
         >
           <Code className="node-icon" />
           <span>Lambda</span>
-        </motion.div>
+        </div>
+
+        {/* 6. AWS EC2 (Deploy) - Middle Left */}
+        <div 
+          className="cloud-node glass-panel node-ec2"
+          style={{ top: '45%', right: '54%' }}
+        >
+          <Cloud className="node-icon" />
+          <span>AWS EC2</span>
+        </div>
       </div>
 
       {/* Resume Modal */}

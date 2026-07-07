@@ -97,6 +97,46 @@
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
 }
 
+/* CSS Keyframe floating animations */
+@keyframes float-jenkins {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) translateX(5px) rotate(2deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+@keyframes float-sonar {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(12px) translateX(-6px) rotate(-2deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+@keyframes float-nexus {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) translateX(4px) rotate(1.5deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+@keyframes float-s3 {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(15px) translateX(-5px) rotate(-2deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+@keyframes float-lambda {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) translateX(6px) rotate(2deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+@keyframes float-ec2 {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(14px) translateX(-4px) rotate(-1.5deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+
+.node-jenkins { animation: float-jenkins 6s ease-in-out infinite; }
+.node-sonar { animation: float-sonar 7s ease-in-out infinite; }
+.node-nexus { animation: float-nexus 5.5s ease-in-out infinite; }
+.node-s3 { animation: float-s3 6.5s ease-in-out infinite; }
+.node-lambda { animation: float-lambda 5.8s ease-in-out infinite; }
+.node-ec2 { animation: float-ec2 6.2s ease-in-out infinite; }
+
+
 .node-icon {
   color: var(--color-secondary);
 }

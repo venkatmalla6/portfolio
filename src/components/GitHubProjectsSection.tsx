@@ -15,19 +15,47 @@ const IS_DEV = import.meta.env.DEV;
 const DEV_TOKEN = import.meta.env.VITE_GITHUB_TOKEN; // only present locally, never in build
 
 async function githubFetch(endpoint: string): Promise<any> {
+  const publicUrlMap: Record<string, string> = {
+    repos: `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`,
+    user: `https://api.github.com/users/${GITHUB_USERNAME}`,
+  };
+
   if (IS_DEV && DEV_TOKEN) {
-    // Local dev: call GitHub API directly
-    const urlMap: Record<string, string> = {
-      repos: `https://api.github.com/user/repos?type=all&per_page=100&sort=updated`,
-      user: `https://api.github.com/users/${GITHUB_USERNAME}`,
-    };
-    const res = await fetch(urlMap[endpoint], {
+    try {
+      const devUrlMap: Record<string, string> = {
+        repos: `https://api.github.com/user/repos?type=all&per_page=100&sort=updated`,
+        user: `https://api.github.com/users/${GITHUB_USERNAME}`,
+      };
+      
+      const res = await fetch(devUrlMap[endpoint], {
+        headers: {
+          Accept: 'application/vnd.github+json',
+          Authorization: `Bearer ${DEV_TOKEN}`,
+        },
+      });
+
+      if (res.ok) {
+        return res.json();
+      }
+
+      if (res.status === 401 || res.status === 403) {
+        console.warn(`GitHub developer token is invalid or expired (Status ${res.status}). Falling back to public API fetch.`);
+      } else {
+        throw new Error(`GitHub API error: ${res.status}`);
+      }
+    } catch (e: any) {
+      console.warn("Dev token fetch failed, attempting public fallback:", e);
+    }
+  }
+
+  if (IS_DEV) {
+    // Local dev public fallback: call GitHub API directly without token
+    const res = await fetch(publicUrlMap[endpoint], {
       headers: {
         Accept: 'application/vnd.github+json',
-        Authorization: `Bearer ${DEV_TOKEN}`,
       },
     });
-    if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+    if (!res.ok) throw new Error(`GitHub API error (Public): ${res.status}`);
     return res.json();
   } else {
     // Production: call the secure serverless proxy — token never leaves the server

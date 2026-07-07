@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import HeroSection from './components/HeroSection'
 
@@ -32,39 +31,39 @@ function App() {
       <NavBar />
       
       <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<HeroSection />} />
-          
-          <Route path="/about" element={
-            <div className="page-container">
-              <AboutMeSection />
-              <div style={{ height: '80px' }} />
-              <FuturisticTimelineSection />
-            </div>
-          } />
-          
-          <Route path="/skills" element={
-            <div className="page-container">
-              <SkillsDashboard />
-              <div style={{ height: '80px' }} />
-              <DevopsPipelineSection />
-              <div style={{ height: '80px' }} />
-              <AwsArchitectureSection />
-              <div style={{ height: '80px' }} />
-              <NetworkTopologySection />
-            </div>
-          } />
+        <section id="home">
+          <HeroSection />
+        </section>
 
-          <Route path="/recruiter" element={<RecruiterDashboardSection />} />
-          <Route path="/projects" element={
-            <div className="page-container">
-              <ProjectsShowcase />
-              <div style={{ height: '80px' }} />
-              <GitHubProjectsSection />
-            </div>
-          } />
-          <Route path="/contact" element={<CommunicationCenter />} />
-        </Routes>
+        <section id="recruiter">
+          <RecruiterDashboardSection />
+        </section>
+
+        <section id="projects" className="page-container">
+          <ProjectsShowcase />
+          <div style={{ height: '80px' }} />
+          <GitHubProjectsSection />
+        </section>
+
+        <section id="skills" className="page-container">
+          <SkillsDashboard />
+          <div style={{ height: '80px' }} />
+          <DevopsPipelineSection />
+          <div style={{ height: '80px' }} />
+          <AwsArchitectureSection />
+          <div style={{ height: '80px' }} />
+          <NetworkTopologySection />
+        </section>
+
+        <section id="about" className="page-container">
+          <AboutMeSection />
+          <div style={{ height: '80px' }} />
+          <FuturisticTimelineSection />
+        </section>
+
+        <section id="contact">
+          <CommunicationCenter />
+        </section>
       </Suspense>
       
       <div style={{ height: '80px' }} />
