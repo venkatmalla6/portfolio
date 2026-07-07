@@ -12,57 +12,35 @@ const GITHUB_USERNAME = 'venkatmalla6';
 // In production: calls /.netlify/functions/github-proxy (token stays server-side)
 // In dev: calls GitHub API directly using local .env token (never deployed)
 const IS_DEV = import.meta.env.DEV;
-const DEV_TOKEN = import.meta.env.VITE_GITHUB_TOKEN; // only present locally, never in build
 
 async function githubFetch(endpoint: string): Promise<any> {
+  // 1. Primary: Fetch through the serverless proxy (Token stays 100% server-side)
+  // Works in Production (Netlify) and Local Dev if running 'netlify dev'
+  try {
+    const res = await fetch(`/.netlify/functions/github-proxy?endpoint=${endpoint}`);
+    if (res.ok) {
+      return await res.json();
+    }
+    // If the proxy returns an auth error (401/403) or is missing, fall through to public API
+    console.warn(`Proxy returned status ${res.status}. Falling back to public API.`);
+  } catch (e) {
+    console.warn("Proxy fetch failed, attempting public fallback:", e);
+  }
+
+  // 2. Safe Fallback: Fetch public data directly from GitHub (No token required)
+  // Works when running raw 'npm run dev' without Netlify CLI
   const publicUrlMap: Record<string, string> = {
     repos: `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`,
     user: `https://api.github.com/users/${GITHUB_USERNAME}`,
   };
 
-  if (IS_DEV && DEV_TOKEN) {
-    try {
-      const devUrlMap: Record<string, string> = {
-        repos: `https://api.github.com/user/repos?type=all&per_page=100&sort=updated`,
-        user: `https://api.github.com/users/${GITHUB_USERNAME}`,
-      };
-      
-      const res = await fetch(devUrlMap[endpoint], {
-        headers: {
-          Accept: 'application/vnd.github+json',
-          Authorization: `Bearer ${DEV_TOKEN}`,
-        },
-      });
-
-      if (res.ok) {
-        return res.json();
-      }
-
-      if (res.status === 401 || res.status === 403) {
-        console.warn(`GitHub developer token is invalid or expired (Status ${res.status}). Falling back to public API fetch.`);
-      } else {
-        throw new Error(`GitHub API error: ${res.status}`);
-      }
-    } catch (e: any) {
-      console.warn("Dev token fetch failed, attempting public fallback:", e);
-    }
-  }
-
-  if (IS_DEV) {
-    // Local dev public fallback: call GitHub API directly without token
-    const res = await fetch(publicUrlMap[endpoint], {
-      headers: {
-        Accept: 'application/vnd.github+json',
-      },
-    });
-    if (!res.ok) throw new Error(`GitHub API error (Public): ${res.status}`);
-    return res.json();
-  } else {
-    // Production: call the secure serverless proxy — token never leaves the server
-    const res = await fetch(`/.netlify/functions/github-proxy?endpoint=${endpoint}`);
-    if (!res.ok) throw new Error(`Proxy error: ${res.status}`);
-    return res.json();
-  }
+  const res = await fetch(publicUrlMap[endpoint], {
+    headers: {
+      Accept: 'application/vnd.github+json',
+    },
+  });
+  if (!res.ok) throw new Error(`GitHub API error (Public Fallback): ${res.status}`);
+  return res.json();
 }
 
 interface Repo {
