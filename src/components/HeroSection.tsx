@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Eye, Cloud, Database, Code, X, FileText, Terminal, Infinity, ShieldCheck, Package } from 'lucide-react';
+import { Eye, Cloud, Database, Code, X, FileText, Terminal } from 'lucide-react';
 import TerminalEmulator from './TerminalEmulator';
 import './HeroSection.css';
 
@@ -87,7 +87,7 @@ const HeroSection = () => {
           className="cloud-node glass-panel node-jenkins"
           style={{ top: '12%', right: '48%' }}
         >
-          <Infinity className="node-icon" style={{ color: '#F05138' }} />
+          <img src="https://cdn.simpleicons.org/jenkins/F05138" alt="Jenkins" className="node-icon-svg" />
           <span>Jenkins</span>
         </div>
 
@@ -96,7 +96,7 @@ const HeroSection = () => {
           className="cloud-node glass-panel node-sonar"
           style={{ top: '12%', right: '12%' }}
         >
-          <ShieldCheck className="node-icon" style={{ color: '#4E9BCD' }} />
+          <img src="https://cdn.simpleicons.org/sonarqubeserver/4E9BCD" alt="SonarQube" className="node-icon-svg" />
           <span>SonarQube</span>
         </div>
 
@@ -105,7 +105,7 @@ const HeroSection = () => {
           className="cloud-node glass-panel node-nexus"
           style={{ top: '45%', right: '2%' }}
         >
-          <Package className="node-icon" style={{ color: '#E15A27' }} />
+          <img src="https://cdn.simpleicons.org/sonatype/E15A27" alt="Nexus" className="node-icon-svg" />
           <span>Nexus</span>
         </div>
 

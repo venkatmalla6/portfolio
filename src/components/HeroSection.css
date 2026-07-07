@@ -137,6 +137,12 @@
 .node-ec2 { animation: float-ec2 6.2s ease-in-out infinite; }
 
 
+.node-icon, .node-icon-svg {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
 .node-icon {
   color: var(--color-secondary);
 }
