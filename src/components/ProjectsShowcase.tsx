@@ -44,8 +44,8 @@ const ProjectCard = ({ project }: { project: any }) => {
   const mouseXSpring = useSpring(x, { stiffness: 300, damping: 40 });
   const mouseYSpring = useSpring(y, { stiffness: 300, damping: 40 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -75,6 +75,11 @@ const ProjectCard = ({ project }: { project: any }) => {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      whileHover={{ scale: 1.02, y: -4 }}
       style={{
         rotateX,
         rotateY,

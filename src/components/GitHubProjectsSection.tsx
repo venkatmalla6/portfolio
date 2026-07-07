@@ -107,8 +107,8 @@ const RepoCard = ({ repo }: { repo: Repo }) => {
   const y = useMotionValue(0);
   const mouseXSpring = useSpring(x, { stiffness: 300, damping: 40 });
   const mouseYSpring = useSpring(y, { stiffness: 300, damping: 40 });
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['12deg', '-12deg']);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-12deg', '12deg']);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['6deg', '-6deg']);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-6deg', '6deg']);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -126,11 +126,13 @@ const RepoCard = ({ repo }: { repo: Repo }) => {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { x.set(0); y.set(0); }}
+      initial={{ opacity: 0, y: 35 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      whileHover={{ scale: 1.02, y: -4 }}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       className="gh-card-wrapper"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
     >
       <div className="gh-card glass-panel glass-panel-hover">
         {/* Top row */}
