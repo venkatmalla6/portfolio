@@ -209,6 +209,21 @@ const GitHubProjectsSection = () => {
   const [filterOwner, setFilterOwner] = useState<string>('all');
   const [filterLang, setFilterLang] = useState<string>('all');
   const [showDropdown, setShowDropdown] = useState<string | null>(null);
+  const ownerRef = useRef<HTMLDivElement>(null);
+  const langRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (showDropdown === 'owner' && ownerRef.current && !ownerRef.current.contains(e.target as Node)) {
+        setShowDropdown(null);
+      }
+      if (showDropdown === 'lang' && langRef.current && !langRef.current.contains(e.target as Node)) {
+        setShowDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, [showDropdown]);
 
   const fetchData = async () => {
     setLoading(true);
@@ -309,7 +324,7 @@ const GitHubProjectsSection = () => {
           <Filter size={16} className="gh-filter-icon" />
 
           {/* Owner filter */}
-          <div className="gh-dropdown-wrap" onMouseLeave={() => setShowDropdown(null)}>
+          <div className="gh-dropdown-wrap" ref={ownerRef}>
             <button
               className="gh-filter-btn"
               onClick={() => setShowDropdown(showDropdown === 'owner' ? null : 'owner')}
@@ -334,7 +349,7 @@ const GitHubProjectsSection = () => {
           </div>
 
           {/* Language filter */}
-          <div className="gh-dropdown-wrap" onMouseLeave={() => setShowDropdown(null)}>
+          <div className="gh-dropdown-wrap" ref={langRef}>
             <button
               className="gh-filter-btn"
               onClick={() => setShowDropdown(showDropdown === 'lang' ? null : 'lang')}
