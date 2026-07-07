@@ -1,4 +1,3 @@
-import React from 'react';
 import './ResumeDocument.css';
 
 const ResumeDocument = () => {

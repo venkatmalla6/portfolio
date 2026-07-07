@@ -1,4 +1,4 @@
-import { History, GraduationCap, Users, Award, Briefcase, Trophy } from 'lucide-react';
+import { History, GraduationCap, Users, Briefcase, Trophy } from 'lucide-react';
 import './FuturisticTimelineSection.css';
 
 const timelineData = [

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Briefcase, Mail, Phone, MapPin, Download, FileText, Verified, Brain, GraduationCap, Terminal } from 'lucide-react';
+import { Briefcase, Mail, Phone, MapPin, Download, Verified, Brain, GraduationCap, Terminal } from 'lucide-react';
 import './RecruiterDashboardSection.css';
 
 const RecruiterDashboardSection = () => {

@@ -1,4 +1,4 @@
-import { Radar, Cloud, Box, Code, Globe, Server, Shield, Network, GitBranch, Terminal, Database } from 'lucide-react';
+import { Radar, Cloud, Box, Code, Globe, Server, Network, GitBranch, Terminal, Database } from 'lucide-react';
 import './SkillsDashboard.css';
 
 const cloudSkills = [

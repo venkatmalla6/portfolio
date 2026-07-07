@@ -9,9 +9,6 @@ import './GitHubProjectsSection.css';
 // NO token in frontend code — API calls go through a secure Netlify serverless proxy
 const GITHUB_USERNAME = 'venkatmalla6';
 
-// In production: calls /.netlify/functions/github-proxy (token stays server-side)
-// In dev: calls GitHub API directly using local .env token (never deployed)
-const IS_DEV = import.meta.env.DEV;
 
 async function githubFetch(endpoint: string): Promise<any> {
   // 1. Primary: Fetch through the serverless proxy (Token stays 100% server-side)
