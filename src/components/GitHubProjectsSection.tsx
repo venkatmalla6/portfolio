@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import {
   GitBranch, Star, GitFork, Code2, Building2, Lock, Globe,
-  ExternalLink, RefreshCw, Filter, ChevronDown, Terminal
+  ExternalLink, RefreshCw, Filter, ChevronDown, Terminal, Search, ArrowUpDown
 } from 'lucide-react';
 import './GitHubProjectsSection.css';
 
@@ -24,19 +24,25 @@ async function githubFetch(endpoint: string): Promise<any> {
     console.warn("Proxy fetch failed, attempting public fallback:", e);
   }
 
-  // 2. Safe Fallback: Fetch public data directly from GitHub (No token required)
-  // Works when running raw 'npm run dev' without Netlify CLI
-  const publicUrlMap: Record<string, string> = {
-    repos: `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`,
-    user: `https://api.github.com/users/${GITHUB_USERNAME}`,
-  };
+  // 2. Safe Fallback / Local Dev: Use VITE_GITHUB_TOKEN if present
+  const viteToken = import.meta.env.VITE_GITHUB_TOKEN;
+  
+  let url = '';
+  const headers: any = { Accept: 'application/vnd.github+json' };
 
-  const res = await fetch(publicUrlMap[endpoint], {
-    headers: {
-      Accept: 'application/vnd.github+json',
-    },
-  });
-  if (!res.ok) throw new Error(`GitHub API error (Public Fallback): ${res.status}`);
+  if (viteToken) {
+    headers.Authorization = `Bearer ${viteToken}`;
+    url = endpoint === 'repos' 
+      ? `https://api.github.com/user/repos?type=all&per_page=100&sort=updated`
+      : `https://api.github.com/users/${GITHUB_USERNAME}`;
+  } else {
+    url = endpoint === 'repos'
+      ? `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`
+      : `https://api.github.com/users/${GITHUB_USERNAME}`;
+  }
+
+  const res = await fetch(url, { headers });
+  if (!res.ok) throw new Error(`GitHub API error (Fallback): ${res.status}`);
   return res.json();
 }
 
@@ -208,9 +214,12 @@ const GitHubProjectsSection = () => {
   const [error, setError] = useState<string | null>(null);
   const [filterOwner, setFilterOwner] = useState<string>('all');
   const [filterLang, setFilterLang] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [sortBy, setSortBy] = useState<'updated' | 'stars' | 'forks' | 'name'>('updated');
   const [showDropdown, setShowDropdown] = useState<string | null>(null);
   const ownerRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
+  const sortRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
@@ -254,10 +263,25 @@ const GitHubProjectsSection = () => {
   const owners = ['all', ...Array.from(new Set(repos.map(r => r.owner.login)))];
   const languages = ['all', ...Array.from(new Set(repos.map(r => r.language).filter(Boolean) as string[]))];
 
-  const displayed = repos.filter(r => {
+  let displayed = repos.filter(r => {
     if (filterOwner !== 'all' && r.owner.login !== filterOwner) return false;
     if (filterLang !== 'all' && r.language !== filterLang) return false;
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      const matchesName = r.name.toLowerCase().includes(q);
+      const matchesDesc = r.description?.toLowerCase().includes(q) || false;
+      const matchesTopics = r.topics?.some(t => t.toLowerCase().includes(q)) || false;
+      if (!matchesName && !matchesDesc && !matchesTopics) return false;
+    }
     return true;
+  });
+
+  displayed = displayed.sort((a, b) => {
+    if (sortBy === 'updated') return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+    if (sortBy === 'stars') return b.stargazers_count - a.stargazers_count;
+    if (sortBy === 'forks') return b.forks_count - a.forks_count;
+    if (sortBy === 'name') return a.name.localeCompare(b.name);
+    return 0;
   });
 
   // Stats
@@ -369,6 +393,48 @@ const GitHubProjectsSection = () => {
                     {l === 'all' ? 'All Languages' : (
                       <><span className="gh-lang-dot-sm" style={{ background: LANGUAGE_COLORS[l] || '#6b7280' }} />{l}</>
                     )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Search */}
+          <div className="gh-search-wrap" style={{ display: 'flex', alignItems: 'center', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '8px', padding: '0 8px', border: '1px solid rgba(255, 255, 255, 0.12)' }}>
+            <Search size={14} color="rgba(255, 255, 255, 0.4)" />
+            <input 
+              type="text" 
+              placeholder="Search repos..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.8)', padding: '8px', outline: 'none', fontSize: '0.82rem', width: '140px' }}
+            />
+          </div>
+
+          {/* Sort filter */}
+          <div className="gh-dropdown-wrap" ref={sortRef}>
+            <button
+              className="gh-filter-btn"
+              onClick={() => setShowDropdown(showDropdown === 'sort' ? null : 'sort')}
+            >
+              <ArrowUpDown size={14} />
+              {sortBy === 'updated' ? 'Recently Updated' : sortBy === 'stars' ? 'Most Stars' : sortBy === 'forks' ? 'Most Forks' : 'Name'}
+              <ChevronDown size={14} />
+            </button>
+            {showDropdown === 'sort' && (
+              <div className="gh-dropdown">
+                {[
+                  { id: 'updated', label: 'Recently Updated' },
+                  { id: 'stars', label: 'Most Stars' },
+                  { id: 'forks', label: 'Most Forks' },
+                  { id: 'name', label: 'Name' }
+                ].map(s => (
+                  <button
+                    key={s.id}
+                    className={`gh-dropdown-item ${sortBy === s.id ? 'active' : ''}`}
+                    onClick={() => { setSortBy(s.id as any); setShowDropdown(null); }}
+                  >
+                    {s.label}
                   </button>
                 ))}
               </div>

@@ -10,7 +10,6 @@ const RecruiterDashboardSection = React.lazy(() => import('./components/Recruite
 const DevopsPipelineSection = React.lazy(() => import('./components/DevopsPipelineSection'))
 const AwsArchitectureSection = React.lazy(() => import('./components/AwsArchitectureSection'))
 const NetworkTopologySection = React.lazy(() => import('./components/NetworkTopologySection'))
-const ProjectsShowcase = React.lazy(() => import('./components/ProjectsShowcase'))
 const GitHubProjectsSection = React.lazy(() => import('./components/GitHubProjectsSection'))
 const CommunicationCenter = React.lazy(() => import('./components/CommunicationCenter'))
 const CredlyBadgesSection = React.lazy(() => import('./components/CredlyBadgesSection'))
@@ -41,8 +40,6 @@ function App() {
         </section>
 
         <section id="projects" className="page-container">
-          <ProjectsShowcase />
-          <div style={{ height: '80px' }} />
           <GitHubProjectsSection />
         </section>
 
