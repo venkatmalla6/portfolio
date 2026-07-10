@@ -13,6 +13,7 @@ const NetworkTopologySection = React.lazy(() => import('./components/NetworkTopo
 const ProjectsShowcase = React.lazy(() => import('./components/ProjectsShowcase'))
 const GitHubProjectsSection = React.lazy(() => import('./components/GitHubProjectsSection'))
 const CommunicationCenter = React.lazy(() => import('./components/CommunicationCenter'))
+const CredlyBadgesSection = React.lazy(() => import('./components/CredlyBadgesSection'))
 
 // Simple loading fallback
 const PageLoader = () => (
@@ -47,6 +48,8 @@ function App() {
 
         <section id="skills" className="page-container">
           <SkillsDashboard />
+          <div style={{ height: '80px' }} />
+          <CredlyBadgesSection />
           <div style={{ height: '80px' }} />
           <DevopsPipelineSection />
           <div style={{ height: '80px' }} />

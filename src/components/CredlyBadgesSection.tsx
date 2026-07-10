@@ -1,0 +1,145 @@
+import React from 'react';
+import { Award } from 'lucide-react';
+import './CredlyBadgesSection.css';
+
+// Interface for a Credly badge
+export interface CredlyBadge {
+  id: string;
+  name: string;
+  issuer: string;
+  imageUrl: string;
+  badgeUrl: string;
+}
+
+// Placeholder data for 12 badges
+// Replace these with your actual badge details from Credly
+const myBadges: CredlyBadge[] = [
+  {
+    id: '1',
+    name: 'Apply AI: Analyze Customer Reviews',
+    issuer: 'Cisco',
+    imageUrl: 'https://images.credly.com/images/32aad19b-a359-48f5-a332-2cd9ac2b8731/linkedin_thumb_blob',
+    badgeUrl: 'https://www.credly.com/badges/c7985bb3-6e9b-43a8-a745-8afd4a2f316a'
+  },
+  {
+    id: '2',
+    name: 'CCNA: Enterprise Networking, Security, and Automation',
+    issuer: 'Cisco',
+    imageUrl: 'https://images.credly.com/images/0a6d331e-8abf-4272-a949-33f754569a76/linkedin_thumb_CCNAENSA__1_.png',
+    badgeUrl: 'https://www.credly.com/badges/c63bbbd2-1c0e-4c5e-8dbf-49cb85a8a60f'
+  },
+  {
+    id: '3',
+    name: 'CCNA: Switching, Routing, and Wireless Essentials',
+    issuer: 'Cisco',
+    imageUrl: 'https://images.credly.com/images/f4ccdba9-dd65-4349-baad-8f05df116443/linkedin_thumb_CCNASRWE__1_.png',
+    badgeUrl: 'https://www.credly.com/badges/ab383f9a-62a2-49b4-94e9-7e833e75ca66'
+  },
+  {
+    id: '4',
+    name: 'Introduction to Data Science',
+    issuer: 'Cisco',
+    imageUrl: 'https://images.credly.com/images/b38a42e0-dc58-4ce2-b6c0-28d978e8aaad/linkedin_thumb_image.png',
+    badgeUrl: 'https://www.credly.com/badges/35dabbb0-6275-49ef-b0b8-c72eeac3e5e2'
+  },
+  {
+    id: '5',
+    name: 'Introduction to Modern AI',
+    issuer: 'Cisco',
+    imageUrl: 'https://images.credly.com/images/e2d12302-10f9-40d4-8ff1-066a7008b61d/linkedin_thumb_blob',
+    badgeUrl: 'https://www.credly.com/badges/ed357ff4-e4e3-4ee9-bb1f-3c9b0e2d1560'
+  },
+  {
+    id: '6',
+    name: 'Python Essentials 1',
+    issuer: 'Cisco',
+    imageUrl: 'https://images.credly.com/images/68c0b94d-f6ac-40b1-a0e0-921439eb092e/linkedin_thumb_image.png',
+    badgeUrl: 'https://www.credly.com/badges/76f7ce76-3335-46e3-9855-40aac9e4e796'
+  },
+  {
+    id: '7',
+    name: 'Python Essentials 2',
+    issuer: 'Cisco',
+    imageUrl: 'https://images.credly.com/images/3f802526-7274-4230-91ab-f6d1a35340e6/linkedin_thumb_image.png',
+    badgeUrl: 'https://www.credly.com/badges/390f161d-7b06-43df-81a7-dc30a397dfc1'
+  },
+  {
+    id: '8',
+    name: 'AWS Certified Cloud Practitioner',
+    issuer: 'Amazon Web Services Training and Certification',
+    imageUrl: 'https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/linkedin_thumb_image.png',
+    badgeUrl: 'https://www.credly.com/badges/227975b4-0788-4229-93d6-0e835a063faa'
+  },
+  {
+    id: '9',
+    name: 'Red Hat Training: Getting Started with Linux Fundamentals (RH104 - RHA) - Ver. 9.1',
+    issuer: 'Red Hat',
+    imageUrl: 'https://images.credly.com/images/d52a2d84-70d9-4613-82a4-b6dfe1d5a06c/linkedin_thumb_blob',
+    badgeUrl: 'https://www.credly.com/badges/556fc788-84fb-44a7-bc3c-efeff0fb3cef'
+  },
+  {
+    id: '10',
+    name: 'Artificial Intelligence Fundamentals',
+    issuer: 'IBM SkillsBuild',
+    imageUrl: 'https://images.credly.com/images/82b908e1-fdcd-4785-9d32-97f11ccbcf08/linkedin_thumb_image.png',
+    badgeUrl: 'https://www.credly.com/badges/3c13c989-fe07-42d5-9085-ff4985c2fb60'
+  },
+  {
+    id: '11',
+    name: 'Networking Basics',
+    issuer: 'Cisco',
+    imageUrl: 'https://images.credly.com/images/5bdd6a39-3e03-4444-9510-ecff80c9ce79/linkedin_thumb_image.png',
+    badgeUrl: 'https://www.credly.com/badges/99f3f951-c609-427d-b8a4-073621fc45f2'
+  },
+  {
+    id: '12',
+    name: 'Introduction to Cybersecurity',
+    issuer: 'Cisco',
+    imageUrl: 'https://images.credly.com/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/linkedin_thumb_I2CS__1_.png',
+    badgeUrl: 'https://www.credly.com/badges/a266280a-1984-49c1-9b84-967dd3c4769e'
+  }
+];
+
+const CredlyBadgesSection: React.FC = () => {
+  return (
+    <div className="badges-section" id="certifications">
+      <div className="badges-header">
+        <h2 className="badges-title">
+          <Award className="badges-title-icon" />
+          Certifications & Badges
+        </h2>
+        <p className="badges-subtitle">
+          Professional certifications and verifiable credentials I've earned.
+        </p>
+      </div>
+
+      <div className="badges-grid">
+        {myBadges.map((badge) => (
+          <a
+            key={badge.id}
+            href={badge.badgeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="badge-card"
+            title={`View my ${badge.name} badge on Credly`}
+          >
+            <div className="badge-image-container">
+              <img 
+                src={badge.imageUrl} 
+                alt={badge.name} 
+                className="badge-image"
+                loading="lazy"
+              />
+            </div>
+            <div className="badge-info">
+              <h3 className="badge-name">{badge.name}</h3>
+              <span className="badge-issuer">{badge.issuer}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default CredlyBadgesSection;
