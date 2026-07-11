@@ -34,7 +34,7 @@ const projects = [
   }
 ];
 
-const ProjectCard = ({ project }: { project: any }) => {
+const ProjectCard = ({ project }: { project: { title: string; description: string; tags: string[]; icon: React.ReactNode; metrics: string[] } }) => {
   const ref = useRef<HTMLDivElement>(null);
   
   // Motion values for 3D tilt

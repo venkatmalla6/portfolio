@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Eye, Cloud, Database, Code, X, FileText, Terminal } from 'lucide-react';
+import { Eye, X, FileText, Terminal } from 'lucide-react';
 import TerminalEmulator from './TerminalEmulator';
 import './HeroSection.css';
 

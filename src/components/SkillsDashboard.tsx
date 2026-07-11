@@ -27,7 +27,7 @@ const backendSkills = [
   { name: 'Firebase', level: 90, Icon: Database },
 ];
 
-const SkillCategory = ({ title, skills }: { title: string, skills: any[] }) => {
+const SkillCategory = ({ title, skills }: { title: string, skills: { name: string; level: number; Icon: React.ElementType }[] }) => {
   return (
     <div className="skill-category glass-panel">
       <h3 className="category-title">{title}</h3>

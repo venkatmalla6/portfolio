@@ -10,7 +10,7 @@ import './GitHubProjectsSection.css';
 const GITHUB_USERNAME = 'venkatmalla6';
 
 
-async function githubFetch(endpoint: string): Promise<any> {
+async function githubFetch(endpoint: string): Promise<unknown> {
   // 1. Primary: Fetch through the serverless proxy (Token stays 100% server-side)
   // Works in Production (Netlify) and Local Dev if running 'netlify dev'
   try {
@@ -28,8 +28,7 @@ async function githubFetch(endpoint: string): Promise<any> {
   const viteToken = import.meta.env.VITE_GITHUB_TOKEN;
   
   const fetchWithToken = async (useToken: boolean) => {
-    let url = '';
-    const headers: any = { Accept: 'application/vnd.github+json' };
+    const headers: Record<string, string> = { Accept: 'application/vnd.github+json' };
 
     if (useToken && viteToken) {
       headers.Authorization = `Bearer ${viteToken}`;
@@ -293,13 +292,14 @@ const GitHubProjectsSection = () => {
 
       setRepos(filtered);
       setUser(userData);
-    } catch (e: any) {
-      setError(e.message || 'Failed to fetch GitHub data');
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : 'Failed to fetch GitHub data');
     } finally {
       setLoading(false);
     }
   };
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { fetchData(); }, []);
 
   // Derived filters
@@ -475,7 +475,7 @@ const GitHubProjectsSection = () => {
                   <button
                     key={s.id}
                     className={`gh-dropdown-item ${sortBy === s.id ? 'active' : ''}`}
-                    onClick={() => { setSortBy(s.id as any); setShowDropdown(null); }}
+                    onClick={() => { setSortBy(s.id as 'updated' | 'stars' | 'forks' | 'name'); setShowDropdown(null); }}
                   >
                     {s.label}
                   </button>

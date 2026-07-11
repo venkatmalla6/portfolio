@@ -38,24 +38,24 @@ const CommunicationCenter = () => {
 
         <div className="contact-cards">
           <div className="contact-row">
-            <a href="mailto:venkatmallacs@gmail.com" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': 'var(--color-accent)' } as any}>
+            <a href="mailto:venkatmallacs@gmail.com" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': 'var(--color-accent)' } as React.CSSProperties}>
               <Mail size={32} className="contact-icon" />
               <h4>Email</h4>
               <p>venkatmallacs@gmail.com</p>
             </a>
-            <a href="tel:+916303148893" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': 'var(--color-secondary)' } as any}>
+            <a href="tel:+916303148893" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': 'var(--color-secondary)' } as React.CSSProperties}>
               <Phone size={32} className="contact-icon" />
               <h4>Phone</h4>
               <p>+91 6303148893</p>
             </a>
           </div>
           <div className="contact-row">
-            <a href="https://linkedin.com/in/venkat-malla-5528b8381" target="_blank" rel="noopener noreferrer" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': '#0077b5' } as any}>
+            <a href="https://linkedin.com/in/venkat-malla-5528b8381" target="_blank" rel="noopener noreferrer" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': '#0077b5' } as React.CSSProperties}>
               <Users size={32} className="contact-icon" />
               <h4>LinkedIn</h4>
               <p>Venkat Malla</p>
             </a>
-            <a href="https://github.com/venkatmalla6" target="_blank" rel="noopener noreferrer" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': '#ffffff' } as any}>
+            <a href="https://github.com/venkatmalla6" target="_blank" rel="noopener noreferrer" className="contact-card glass-panel glass-panel-hover" style={{ '--hover-color': '#ffffff' } as React.CSSProperties}>
               <Code2 size={32} className="contact-icon" />
               <h4>GitHub</h4>
               <p>@venkatmalla6</p>
