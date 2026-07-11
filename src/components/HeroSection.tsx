@@ -27,19 +27,14 @@ const HeroSection = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="system-status">SYSTEM ONLINE</p>
-          
-          <div className="profile-image-container">
-            <img src={`${import.meta.env.BASE_URL}profile-edited.png`} alt="Malla Venkat" className="profile-image" />
-            <div className="profile-glow"></div>
-          </div>
-
           <h1 className="hero-title">
             Malla Venkat
           </h1>
           <h2 className="hero-subtitle text-gradient">
             Cloud Engineer & Full Stack Developer
           </h2>
+          
+          <p className="system-status">Available for Opportunities</p>
           
           <div className="hero-actions">
             <button 
@@ -48,11 +43,11 @@ const HeroSection = () => {
               onClick={() => setIsResumeModalOpen(true)}
             >
               <FileText size={20} />
-              VIEW RESUME
+              View Resume
             </button>
             <a href="#projects" className="btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
               <Eye size={20} />
-              VIEW PROJECTS
+              View Projects
             </a>
             <button 
               className="btn-secondary" 
@@ -61,7 +56,7 @@ const HeroSection = () => {
               title="Ctrl+` to toggle terminal"
             >
               <Terminal size={20} />
-              TERMINAL
+              Terminal
             </button>
           </div>
         </motion.div>
@@ -69,72 +64,14 @@ const HeroSection = () => {
 
       <div className="hero-visuals">
         <motion.div 
-          className="earth-globe-container"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+          className="profile-image-container-large"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
         >
-          <img 
-            src={`${import.meta.env.BASE_URL}realistic-globe.png`}
-            alt="Realistic Network Globe" 
-            className="earth-image" 
-          />
+          <img src={`${import.meta.env.BASE_URL}profile-professional.png`} alt="Malla Venkat" className="profile-image-large" />
+          <div className="profile-glow-large"></div>
         </motion.div>
-        
-        {/* Floating Cloud & DevOps Nodes (Orbit Path) */}
-        
-        {/* 1. Jenkins (Build) - Top Left */}
-        <div 
-          className="cloud-node glass-panel node-jenkins"
-          style={{ top: '12%', right: '48%' }}
-        >
-          <img src="https://cdn.simpleicons.org/jenkins/F05138" alt="Jenkins" className="node-icon-svg" />
-          <span>Jenkins</span>
-        </div>
-
-        {/* 2. SonarQube (Quality) - Top Right */}
-        <div 
-          className="cloud-node glass-panel node-sonar"
-          style={{ top: '12%', right: '12%' }}
-        >
-          <img src="https://cdn.simpleicons.org/sonarqubeserver/4E9BCD" alt="SonarQube" className="node-icon-svg" />
-          <span>SonarQube</span>
-        </div>
-
-        {/* 3. Nexus (Artifacts) - Middle Right */}
-        <div 
-          className="cloud-node glass-panel node-nexus"
-          style={{ top: '45%', right: '2%' }}
-        >
-          <img src="https://cdn.simpleicons.org/sonatype/E15A27" alt="Nexus" className="node-icon-svg" />
-          <span>Nexus</span>
-        </div>
-
-        {/* 4. AWS S3 (Deploy) - Bottom Right */}
-        <div 
-          className="cloud-node glass-panel node-s3"
-          style={{ bottom: '10%', right: '10%' }}
-        >
-          <Database className="node-icon" />
-          <span>S3 Bucket</span>
-        </div>
-
-        {/* 5. AWS Lambda (Deploy) - Bottom Left */}
-        <div 
-          className="cloud-node glass-panel node-lambda"
-          style={{ bottom: '10%', right: '50%' }}
-        >
-          <Code className="node-icon" />
-          <span>Lambda</span>
-        </div>
-
-        {/* 6. AWS EC2 (Deploy) - Middle Left */}
-        <div 
-          className="cloud-node glass-panel node-ec2"
-          style={{ top: '45%', right: '54%' }}
-        >
-          <Cloud className="node-icon" />
-          <span>AWS EC2</span>
-        </div>
       </div>
 
       {/* Resume Modal */}

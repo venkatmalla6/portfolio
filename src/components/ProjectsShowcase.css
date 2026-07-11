@@ -11,20 +11,19 @@
 
 .section-header h2 {
   font-size: 1.5rem;
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
   font-weight: 700;
+  color: var(--color-text);
 }
 
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
-  perspective: 1000px;
 }
 
 .project-card-wrapper {
   position: relative;
-  /* preserve-3d handled by inline style */
 }
 
 .project-card {
@@ -32,11 +31,10 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  /* background transition handled by glass-panel-hover */
 }
 
 .project-card:hover {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
+  background: var(--color-surface-alt);
 }
 
 .project-header {
@@ -47,18 +45,19 @@
 }
 
 .text-accent {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .project-title {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   flex: 1;
+  color: var(--color-text);
 }
 
 .arrow-icon {
-  color: var(--color-secondary);
+  color: var(--color-primary);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.25s;
 }
 
 .project-card:hover .arrow-icon {
@@ -66,6 +65,7 @@
 }
 
 .project-desc {
+  color: var(--color-text-muted);
   line-height: 1.6;
   margin-bottom: 2rem;
   flex: 1;
@@ -81,8 +81,8 @@
   font-size: 0.75rem;
   padding: 4px 12px;
   border-radius: 4px;
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
   color: var(--color-secondary);
 }
 
@@ -92,7 +92,7 @@
   flex-direction: column;
   gap: 0.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--color-border);
 }
 
 .metric-item {
@@ -100,14 +100,14 @@
   align-items: center;
   gap: 8px;
   font-size: 0.85rem;
-  color: var(--color-accent);
-  font-family: monospace;
+  color: var(--color-primary);
 }
 
 .metric-dot {
   width: 6px;
   height: 6px;
-  background-color: var(--color-accent);
+  background-color: var(--color-primary);
   border-radius: 50%;
-  box-shadow: 0 0 8px var(--color-accent);
+  /* Removed neon glow */
+  flex-shrink: 0;
 }

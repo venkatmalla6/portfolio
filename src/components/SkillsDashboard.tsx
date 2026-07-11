@@ -60,14 +60,14 @@ const SkillsDashboard = () => {
     <section id="skills" className="skills-section">
       <div className="section-header">
         <Radar size={32} color="var(--color-accent)" />
-        <h2>SYSTEM CAPABILITIES (SKILLS)</h2>
+        <h2>Skills & Technologies</h2>
       </div>
 
       <div className="categories-container">
-        <SkillCategory title="CLOUD & DEVOPS" skills={cloudSkills} />
-        <SkillCategory title="AI ENGINEERING" skills={aiSkills} />
-        <SkillCategory title="PROGRAMMING" skills={programmingSkills} />
-        <SkillCategory title="BACKEND & MOBILE" skills={backendSkills} />
+        <SkillCategory title="Cloud & DevOps" skills={cloudSkills} />
+        <SkillCategory title="AI Engineering" skills={aiSkills} />
+        <SkillCategory title="Programming" skills={programmingSkills} />
+        <SkillCategory title="Backend & Mobile" skills={backendSkills} />
       </div>
     </section>
   );

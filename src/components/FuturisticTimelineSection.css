@@ -3,66 +3,69 @@
 }
 
 .timeline-container {
-  padding: 2rem;
+  padding: 2rem 2.5rem;
+  max-width: 780px; /* narrower to keep cards readable */
 }
 
 .timeline-node-wrapper {
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .timeline-node-wrapper:last-child {
   margin-bottom: 0;
 }
 
+/* Vertical guide line */
 .timeline-line {
   position: absolute;
   left: 11px;
-  top: 24px;
-  bottom: -32px;
+  top: 26px;
+  bottom: -24px;
   width: 2px;
-  background: linear-gradient(to bottom, rgba(16, 185, 129, 0.5), rgba(16, 185, 129, 0.1));
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-border));
+  opacity: 0.4;
 }
 
 .timeline-row {
   display: flex;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
+/* Icon dot */
 .timeline-icon-container {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--color-background);
-  border: 2px solid var(--color-accent);
+  background: var(--color-surface);
+  border: 2px solid var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
-  box-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
-  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all 0.25s ease;
 }
 
 .timeline-icon {
-  color: var(--color-accent);
-  transition: color 0.3s ease;
+  color: var(--color-primary);
+  transition: color 0.25s ease;
 }
 
+/* Content card */
 .timeline-content {
   flex: 1;
-  background: rgba(59, 130, 246, 0.05);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  border-radius: 16px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  transition: all 0.25s ease;
 }
 
 .timeline-row:hover .timeline-icon-container {
-  transform: scale(1.5);
-  background: var(--color-accent);
-  border-color: #fff;
-  box-shadow: 0 0 15px var(--color-accent);
+  background: var(--color-primary);
 }
 
 .timeline-row:hover .timeline-icon {
@@ -70,33 +73,29 @@
 }
 
 .timeline-row:hover .timeline-content {
-  background: rgba(59, 130, 246, 0.15);
-  border-color: var(--color-secondary);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+  box-shadow: 0 4px 18px var(--color-shadow-md);
+  border-color: rgba(184, 134, 11, 0.2);
+  transform: translateX(4px);
 }
 
 .timeline-title {
-  color: #fff;
-  font-size: 1.25rem;
+  color: var(--color-text);
+  font-size: 1.05rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  transition: color 0.3s ease;
-}
-
-.timeline-row:hover .timeline-title {
-  color: var(--color-accent);
+  margin-bottom: 0.3rem;
 }
 
 .timeline-subtitle {
-  color: var(--color-secondary);
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin-bottom: 0.6rem;
 }
 
 .timeline-desc {
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.5;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: 0.875rem;
   margin: 0;
 }

@@ -34,34 +34,36 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: rgba(59, 130, 246, 0.2);
-  border: 1px solid var(--color-secondary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 .aws-icon {
-  color: #fff;
+  color: var(--color-secondary);
   transition: color 0.2s ease;
 }
 
 .aws-node-label {
   font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-text-muted);
   margin-top: 6px;
   text-align: center;
 }
 
 .aws-node:hover .aws-icon-wrapper {
-  transform: scale(1.2);
-  border-color: var(--color-accent);
-  box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+  transform: scale(1.15);
+  border-color: var(--color-primary);
+  background: rgba(184, 134, 11, 0.07);
+  box-shadow: 0 4px 16px var(--color-shadow-md);
 }
 
 .aws-node:hover .aws-icon {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .aws-tooltip {
@@ -70,15 +72,15 @@
   left: 50%;
   transform: translateX(-50%);
   margin-top: 10px;
-  background-color: rgba(15, 23, 42, 0.95);
-  border: 1px solid var(--color-secondary);
-  color: #fff;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 0.75rem;
   width: 150px;
   text-align: center;
   z-index: 20;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px var(--color-shadow-md);
   pointer-events: none;
 }

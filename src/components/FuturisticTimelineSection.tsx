@@ -33,7 +33,7 @@ const FuturisticTimelineSection = () => {
     <section className="timeline-section">
       <div className="section-header">
         <History size={32} color="var(--color-accent)" />
-        <h2>CHRONOLOGICAL LOGS (TIMELINE)</h2>
+        <h2>Experience & Timeline</h2>
       </div>
 
       <div className="timeline-container glass-panel">

@@ -32,7 +32,7 @@ const AwsArchitectureSection = () => {
     <section className="aws-section">
       <div className="section-header">
         <Cloud size={32} color="var(--color-accent)" />
-        <h2>CLOUD OPERATIONS CENTER</h2>
+        <h2>AWS Architecture</h2>
       </div>
 
       <div className="aws-container glass-panel">
@@ -46,9 +46,9 @@ const AwsArchitectureSection = () => {
                 key={`aws-line-${idx}`}
                 x1={`${fromNode.x}%`} y1={`${fromNode.y}%`}
                 x2={`${toNode.x}%`} y2={`${toNode.y}%`}
-                stroke="var(--color-secondary)"
-                strokeOpacity="0.3"
-                strokeWidth="2"
+                stroke="var(--color-border)"
+                strokeOpacity="0.8"
+                strokeWidth="1.5"
               />
             );
           })}
@@ -89,7 +89,7 @@ const AwsArchitectureSection = () => {
           >
             <motion.div 
               className="aws-icon-wrapper"
-              whileHover={{ scale: 1.2, boxShadow: "0 0 20px var(--color-accent)" }}
+              whileHover={{ scale: 1.15 }}
             >
               <node.Icon size={32} className="aws-icon" />
             </motion.div>

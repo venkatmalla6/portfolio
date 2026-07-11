@@ -42,10 +42,10 @@ const AboutMeSection = () => {
             </div>
             
             <div className="profile-text-center">
-              <span className="alias-label">IDENTIFICATION ALIAS</span>
+              <span className="alias-label">Portfolio</span>
               <h2 className="alias-name">VENKAT</h2>
               
-              <h4 className="mission-label">PROFESSIONAL SUMMARY</h4>
+              <h4 className="mission-label">Professional Summary</h4>
               <p className="mission-text">
                 Computer Science Engineering student with hands-on experience in AWS Cloud, DevOps, AI-powered applications, Developer Experience (DevEx), and workflow automation. Passionate about building cloud-native apps and multi-agent AI systems.
               </p>
@@ -56,7 +56,7 @@ const AboutMeSection = () => {
           <div className="about-column">
             <div className="section-sub-header">
               <School size={24} color="var(--color-accent)" />
-              <h3>ACADEMIC TIMELINE</h3>
+              <h3>Education</h3>
             </div>
             <div className="education-list">
               {education.map(edu => (
@@ -77,7 +77,7 @@ const AboutMeSection = () => {
 
             <div className="section-sub-header" style={{ marginTop: '2rem' }}>
               <Verified size={24} color="var(--color-secondary)" />
-              <h3>ACHIEVEMENTS & LEADERSHIP</h3>
+              <h3>Achievements & Leadership</h3>
             </div>
             <div className="certs-list">
               {certs.map(cert => (
@@ -93,7 +93,7 @@ const AboutMeSection = () => {
           <div className="about-column">
             <div className="section-sub-header">
               <Cpu size={24} color="var(--color-primary)" />
-              <h3>COMBAT ABILITIES</h3>
+              <h3>Core Skills</h3>
             </div>
             <div className="skills-chip-container">
               {skills.map(skill => (

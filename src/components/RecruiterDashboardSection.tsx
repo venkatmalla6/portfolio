@@ -31,14 +31,14 @@ const RecruiterDashboardSection = () => {
     <section id="recruiter" className="recruiter-section">
       <div className="section-header">
         <Briefcase size={32} color="var(--color-accent)" />
-        <h2>RECRUITER FAST-TRACK</h2>
+        <h2>Recruiter Overview</h2>
       </div>
 
       <div className="recruiter-grid">
         
         {/* ATS Score & Contact */}
         <div className="glass-panel recruiter-panel">
-          <h3 className="panel-title">ATS COMPATIBILITY SCORE</h3>
+          <h3 className="panel-title">ATS Compatibility Score</h3>
           <div className="ats-score-container">
             <svg className="ats-circle" viewBox="0 0 100 100">
               <circle className="ats-bg" cx="50" cy="50" r="45" />
@@ -54,7 +54,7 @@ const RecruiterDashboardSection = () => {
             </svg>
             <div className="ats-score-text">
               <span className="score-number">{score}%</span>
-              <span className="score-label">{score >= 90 ? 'HIGH MATCH' : 'GOOD MATCH'}</span>
+              <span className="score-label">{score >= 90 ? 'High Match' : 'Good Match'}</span>
             </div>
           </div>
 
@@ -77,7 +77,7 @@ const RecruiterDashboardSection = () => {
 
           <a href="/venkat_resume.pdf" download="Malla_Venkat_Resume.pdf" className="download-btn" style={{ textDecoration: 'none' }}>
             <Download size={18} />
-            DOWNLOAD RESUME
+            Download Resume
           </a>
         </div>
 
@@ -86,7 +86,7 @@ const RecruiterDashboardSection = () => {
           
           <div className="panel-sub-header">
             <Briefcase size={20} color="var(--color-primary)" />
-            <h3 style={{ color: 'var(--color-primary)' }}>CURRENT ROLE</h3>
+            <h3 style={{ color: 'var(--color-primary)' }}>Current Role</h3>
           </div>
           
           <div className="edu-summary" style={{ marginBottom: '1.5rem' }}>
@@ -96,7 +96,7 @@ const RecruiterDashboardSection = () => {
 
           <div className="panel-sub-header">
             <Terminal size={20} color="var(--color-accent)" />
-            <h3 style={{ color: 'var(--color-accent)' }}>FEATURED PROJECTS</h3>
+            <h3 style={{ color: 'var(--color-accent)' }}>Featured Projects</h3>
           </div>
           
           <div className="badge-list" style={{ marginBottom: '1.5rem' }}>
@@ -107,7 +107,7 @@ const RecruiterDashboardSection = () => {
 
           <div className="panel-sub-header">
             <Verified size={20} color="var(--color-secondary)" />
-            <h3 style={{ color: 'var(--color-secondary)' }}>ACHIEVEMENTS</h3>
+            <h3 style={{ color: 'var(--color-secondary)' }}>Achievements</h3>
           </div>
           
           <div className="badge-list">
@@ -121,7 +121,7 @@ const RecruiterDashboardSection = () => {
         <div className="glass-panel recruiter-panel">
           <div className="panel-sub-header">
             <Brain size={20} color="var(--color-accent)" />
-            <h3 style={{ color: 'var(--color-accent)' }}>SKILLS SUMMARY</h3>
+            <h3 style={{ color: 'var(--color-accent)' }}>Skills Summary</h3>
           </div>
 
           <div className="skill-bars">
@@ -135,7 +135,7 @@ const RecruiterDashboardSection = () => {
 
           <div className="panel-sub-header">
             <GraduationCap size={20} color="var(--color-secondary)" />
-            <h3 style={{ color: 'var(--color-secondary)' }}>EDUCATION</h3>
+            <h3 style={{ color: 'var(--color-secondary)' }}>Education</h3>
           </div>
 
           <div className="edu-summary">

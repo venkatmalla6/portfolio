@@ -27,21 +27,32 @@ async function githubFetch(endpoint: string): Promise<any> {
   // 2. Safe Fallback / Local Dev: Use VITE_GITHUB_TOKEN if present
   const viteToken = import.meta.env.VITE_GITHUB_TOKEN;
   
-  let url = '';
-  const headers: any = { Accept: 'application/vnd.github+json' };
+  const fetchWithToken = async (useToken: boolean) => {
+    let url = '';
+    const headers: any = { Accept: 'application/vnd.github+json' };
 
-  if (viteToken) {
-    headers.Authorization = `Bearer ${viteToken}`;
-    url = endpoint === 'repos' 
-      ? `https://api.github.com/user/repos?type=all&per_page=100&sort=updated`
-      : `https://api.github.com/users/${GITHUB_USERNAME}`;
-  } else {
-    url = endpoint === 'repos'
-      ? `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`
-      : `https://api.github.com/users/${GITHUB_USERNAME}`;
+    if (useToken && viteToken) {
+      headers.Authorization = `Bearer ${viteToken}`;
+      url = endpoint === 'repos' 
+        ? `https://api.github.com/user/repos?type=all&per_page=100&sort=updated`
+        : `https://api.github.com/users/${GITHUB_USERNAME}`;
+    } else {
+      url = endpoint === 'repos'
+        ? `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`
+        : `https://api.github.com/users/${GITHUB_USERNAME}`;
+    }
+
+    return fetch(url, { headers });
+  };
+
+  let res = await fetchWithToken(true);
+  
+  // 3. If token is expired/invalid (401) or rate-limited (403), retry completely unauthenticated
+  if (viteToken && (res.status === 401 || res.status === 403)) {
+    console.warn(`Token failed with ${res.status}. Retrying unauthenticated...`);
+    res = await fetchWithToken(false);
   }
 
-  const res = await fetch(url, { headers });
   if (!res.ok) throw new Error(`GitHub API error (Fallback): ${res.status}`);
   return res.json();
 }
@@ -106,6 +117,36 @@ function timeAgo(dateStr: string) {
   return `${Math.floor(months / 12)} year(s) ago`;
 }
 
+const REPO_DESCRIPTIONS: Record<string, string> = {
+  // Public/Existing Repos
+  'portfolio': 'My personal portfolio showcasing my skills in Cloud Engineering, DevOps, and Full Stack Development.',
+  'bhumi-web': 'A web platform built to manage and streamline operations, developed using modern web technologies.',
+  'venkat': 'Personal profile repository containing my GitHub profile configurations and overview.',
+  'venkatmalla6': 'Personal repository used for GitHub profile configuration and automation.',
+  'neev': 'A comprehensive application focusing on robust backend architecture and seamless user experience.',
+  
+  // Private / Organization Repos
+  'Pocketai': 'An AI chatbot application with online and offline support using downloadable local AI models.',
+  'BNL': 'A comprehensive learning and community platform.',
+  'demo-repository': 'A sandbox repository for testing, prototyping, and continuous integration workflows.',
+  'village': 'A community-oriented management platform or local application.',
+  'Hap-Icecreams': 'An e-commerce and business management platform for an ice cream brand.',
+  'crackit-website': 'The official landing page and web platform for the CRACK-IT job placement tools.',
+  'crackit-v-10-app': 'The core application for CRACK-IT job placement tools, facilitating candidate preparation.',
+  'AI-Insurance-agent': 'AI-driven insurance underwriting agent and automated claims processing system.',
+  'telugusamiti': 'A regional community platform for organizing events and connecting members.',
+  'smartMed': 'A smart healthcare application designed for medical record management and patient care.',
+  'MChat': 'A real-time messaging and seamless communication platform.',
+  'sweety': 'A customized internal application project.',
+  'Astar-app': 'Frontend mobile/web application serving the A-star platform ecosystem.',
+  'astar-ai-backend': 'Robust backend AI services and high-performance API for the A-star ecosystem.',
+  'pocketpal': 'A mobile-friendly application for daily utility tracking and task management.',
+  'showsnap': 'A media sharing and event snapshot platform.',
+  'CreaterGo-Admin': 'Admin dashboard and management interface for the CreaterGo platform.',
+  'CreaterGO-APP': 'The main consumer application for the CreaterGo ecosystem.',
+  'fayaz': 'A specialized client or team project repository.',
+};
+
 // 3D Tilt Card
 const RepoCard = ({ repo }: { repo: Repo }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -126,6 +167,8 @@ const RepoCard = ({ repo }: { repo: Repo }) => {
   const orgMeta = ORC_META_SAFE(repo.owner.login);
   const langColor = LANGUAGE_COLORS[repo.language || ''] || '#6b7280';
   const isOrg = repo.owner.login !== GITHUB_USERNAME;
+  
+  const displayDescription = REPO_DESCRIPTIONS[repo.name] || repo.description || null;
 
   return (
     <motion.div
@@ -172,7 +215,7 @@ const RepoCard = ({ repo }: { repo: Repo }) => {
 
         {/* Description */}
         <p className="gh-card-desc" style={{ transform: 'translateZ(30px)' }}>
-          {repo.description || <span className="gh-no-desc">No description provided</span>}
+          {displayDescription ? displayDescription : <span className="gh-no-desc">No description provided</span>}
         </p>
 
         {/* Topics */}
@@ -293,7 +336,7 @@ const GitHubProjectsSection = () => {
       {/* Section Header */}
       <div className="section-header">
         <GitBranch size={32} color="var(--color-accent)" />
-        <h2>GITHUB REPOSITORIES</h2>
+        <h2>GitHub Repositories</h2>
       </div>
 
       {/* User Profile Banner */}

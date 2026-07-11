@@ -31,7 +31,7 @@ const NetworkTopologySection = () => {
     <section className="topology-section">
       <div className="section-header">
         <Network size={32} color="var(--color-secondary)" />
-        <h2>NETWORK OPERATIONS CENTER</h2>
+        <h2>Network Topology</h2>
       </div>
 
       <div className="topology-container glass-panel">
@@ -45,8 +45,8 @@ const NetworkTopologySection = () => {
                 key={`line-${idx}`}
                 x1={`${fromNode.x}%`} y1={`${fromNode.y}%`}
                 x2={`${toNode.x}%`} y2={`${toNode.y}%`}
-                stroke="rgba(59, 130, 246, 0.3)"
-                strokeWidth="2"
+                stroke="var(--color-border)"
+                strokeWidth="1.5"
               />
             );
           })}
