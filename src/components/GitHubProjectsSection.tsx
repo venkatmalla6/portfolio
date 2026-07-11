@@ -28,6 +28,7 @@ async function githubFetch(endpoint: string): Promise<unknown> {
   const viteToken = import.meta.env.VITE_GITHUB_TOKEN;
   
   const fetchWithToken = async (useToken: boolean) => {
+    let url = '';
     const headers: Record<string, string> = { Accept: 'application/vnd.github+json' };
 
     if (useToken && viteToken) {
@@ -281,8 +282,8 @@ const GitHubProjectsSection = () => {
     setError(null);
     try {
       const [reposData, userData] = await Promise.all([
-        githubFetch('repos'),
-        githubFetch('user'),
+        githubFetch('repos') as Promise<Repo[]>,
+        githubFetch('user') as Promise<GithubUser>,
       ]);
 
       // Filter out profile repo and sort by updated
