@@ -30,7 +30,7 @@ const HeroSection = () => {
           <p className="system-status">SYSTEM ONLINE</p>
           
           <div className="profile-image-container">
-            <img src="/profile-edited.png" alt="Malla Venkat" className="profile-image" />
+            <img src={`${import.meta.env.BASE_URL}profile-edited.png`} alt="Malla Venkat" className="profile-image" />
             <div className="profile-glow"></div>
           </div>
 
@@ -74,7 +74,7 @@ const HeroSection = () => {
           transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
         >
           <img 
-            src="/realistic-globe.png" 
+            src={`${import.meta.env.BASE_URL}realistic-globe.png`}
             alt="Realistic Network Globe" 
             className="earth-image" 
           />
@@ -149,7 +149,7 @@ const HeroSection = () => {
             </div>
             <div className="resume-modal-body">
               <iframe 
-                src="/venkat_resume.pdf" 
+                src={`${import.meta.env.BASE_URL}venkat_resume.pdf`}
                 title="Resume"
                 className="resume-iframe"
               />

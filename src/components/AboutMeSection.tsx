@@ -37,7 +37,7 @@ const AboutMeSection = () => {
           <div className="about-column">
             <div className="profile-hologram-wrapper">
               <div className="profile-hologram">
-                <img src="/profile-edited.png" alt="Profile" />
+                <img src={`${import.meta.env.BASE_URL}profile-edited.png`} alt="Profile" />
               </div>
             </div>
             
