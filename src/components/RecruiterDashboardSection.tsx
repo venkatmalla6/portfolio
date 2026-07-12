@@ -91,7 +91,7 @@ const RecruiterDashboardSection = () => {
           
           <div className="edu-summary" style={{ marginBottom: '1.5rem' }}>
             <h4>AWS + DevOps Intern</h4>
-            <p className="edu-school">Techwing | Jan 2026 - Present</p>
+            <p className="edu-school">Techwing | July 2026 - Present</p>
           </div>
 
           <div className="panel-sub-header">

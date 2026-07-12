@@ -65,7 +65,7 @@ const ResumeDocument = () => {
           <div className="resume-item">
             <div className="resume-item-header">
               <span className="resume-item-title"><strong>AWS + DevOps Intern, Techwing</strong></span>
-              <span className="resume-item-date">Jan 2026 – Present</span>
+              <span className="resume-item-date">July 2026 – Present</span>
             </div>
             <ul className="resume-list">
               <li>Deployed and managed cloud infrastructure using AWS EC2, VPC, IAM, S3, Route53, and CloudWatch.</li>

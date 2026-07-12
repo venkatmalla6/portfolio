@@ -4,7 +4,7 @@ import './FuturisticTimelineSection.css';
 const timelineData = [
   {
     title: 'AWS + DevOps Intern',
-    subtitle: 'Techwing (Jan 2026 - Present)',
+    subtitle: 'Techwing (July 2026 - Present)',
     description: 'Deployed and managed AWS cloud infrastructure. Automated deployment workflows using GitHub Actions and implemented IaC using Terraform.',
     Icon: Briefcase,
   },
